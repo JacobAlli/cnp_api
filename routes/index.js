@@ -22,13 +22,7 @@ router.get('/locations', function(req, res, next) {
 });
 
 router.get('/order_details', function(req, res, next) {
-  db.OrderDetail.findAll(
- // {
- //   include: [
- //     {model: Products}
- //   ]
- // }
-  ).then((result) => {
+  db.OrderDetail.findAll().then((result) => {
   	res.send(result);
   });
 });

@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      targetKey: 'id',
      underscored: true
    })
-
+}
   return OrderDetail;
 };
 
