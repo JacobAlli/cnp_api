@@ -23,7 +23,7 @@ router.get('/locations', function(req, res, next) {
 
 router.get('/order_details', function(req, res, next) {
   db.sequelize.query('SELECT * FROM OrderDetails LEFT JOIN Products ON OrderDetails.product_id = Products.product_id').then((result) => {
- res.send(result);
+ res.send(result, result);
   });
 });
 
