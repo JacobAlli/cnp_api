@@ -6,7 +6,13 @@ module.exports = (sequelize, DataTypes) => {
     product_id: DataTypes.STRING
   }, {});
   OrderDetail.associate = function(models) {
-    // associations can be defined here
-  };
+	OrderDetails.belongsTo(models.Products,{
+     foreignKey: 'product_id',
+     targetKey: 'id',
+     underscored: true
+   })
+
   return OrderDetail;
 };
+
+

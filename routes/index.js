@@ -22,7 +22,11 @@ router.get('/locations', function(req, res, next) {
 });
 
 router.get('/order_details', function(req, res, next) {
-  db.OrderDetail.findAll().then((result) => {
+  db.OrderDetail.findAll({
+    include: [
+      {model: Products}
+    ]
+  }).then((result) => {
   	res.send(result);
   });
 });
@@ -39,3 +43,4 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
