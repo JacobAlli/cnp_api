@@ -34,9 +34,61 @@ router.get('/users', function(req, res, next) {
   });
 });
 
+router.post("/add/cart", function(req, res) {
+  db.OrderDetail.create({
+      product_id: req.body.products_id, user_id: req.body.user_id, order_id: req.body.order_id });
+   // function(result) {
+    console.log('added item to user cart');
+  // });
+  res.sendStatus(200);
+ });
+
+ router.post("/add/order", function(req, res) {
+  db.Order.create({
+      user_id: req.body.user_id, total: req.body.total, description: req.body.description });
+   // function(result) {
+    console.log('added order to order table');
+  // });
+  res.sendStatus(200);
+ });
+
+//  router.post('/update/OrderDetails', function(req, res){
+//   var ajaxData = req.body;
+//   // var dataLength = Object.keys(ajaxData).length;
+//   // console.log(Object.keys(ajaxData).length);
+//   // for(i=0; i< dataLength/5; i++){
+//       var cartID = ajaxData[`data[${i}][cartID]`];
+//       var qty = ajaxData[`data[${i}][qty]`];
+//       console.log(cartID);
+//       function findAndUpdate(cartID, qty, cb){
+//           db.OrderDetails.findById(cartID).then((row) => {
+//               cb(cartID, qty, row);
+//           });
+//       }
+//       findAndUpdate(cartID, qty, function(cartID, qty, row){
+//           row.qty = qty;
+//           row.save();
+//       });
+  
+//   res.send(200);
+// });
+
+
+// router.post('/remove/OrderDetails', function(req, res){
+//   console.log(req.body);
+//   db.OrderDetail.findOne({
+//      where: {
+//          id: parseInt(req.body.data)
+//      }
+//  })
+// //  .then(function(cart) {
+// //      cart.destroy();
+// //      res.send('carts')
+// //  });
+// });
 
 router.get('/', function(req, res, next) {
-  res.send('hello');
+  res.send('hello fellow picklers');
 });
 
 module.exports = router;
