@@ -52,6 +52,15 @@ router.post("/add/cart", function(req, res) {
   res.sendStatus(200);
  });
 
+  router.post("/add/user", function(req, res) {
+  db.User.create({
+      firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email, phone: req.body.phone, fbId: req.body.fbId });
+   // function(result) {
+    console.log('added user to user table');
+  // });
+  res.sendStatus(200);
+ });
+
 //  router.post('/update/OrderDetails', function(req, res){
 //   var ajaxData = req.body;
 //   // var dataLength = Object.keys(ajaxData).length;
@@ -69,7 +78,7 @@ router.post("/add/cart", function(req, res) {
 //           row.qty = qty;
 //           row.save();
 //       });
-  
+
 //   res.send(200);
 // });
 
