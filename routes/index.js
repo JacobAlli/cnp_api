@@ -17,7 +17,7 @@ router.get('/products', function(req, res, next) {
 
 router.get('/products/drinks', function(req, res, next) {
   db.sequelize.query("SELECT * FROM Products WHERE category = 'Beer' ORDER BY subcategory", {raw=true}).then((result) => {
-    res.sendStatus(result[0]);
+    res.send(result[0]);
   });
 });
 
@@ -29,7 +29,7 @@ router.get('/locations', function(req, res, next) {
 
 router.get('/order_details', function(req, res, next) {
   db.sequelize.query('SELECT * FROM OrderDetails LEFT JOIN Products ON OrderDetails.product_id = Products.product_id', {raw:true}).then((result) => {
- res.send(result[0]);
+    res.send(result[0]);
   });
 });
 
