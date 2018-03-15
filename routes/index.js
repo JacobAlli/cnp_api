@@ -15,11 +15,11 @@ router.get('/products', function(req, res, next) {
   });
 });
 
-// router.get('/drinks', function(req, res, next) {
-//   db.sequelize.query("SELECT * FROM Products WHERE category = 'Beer'", {raw=true}).then((result) => {
-//     res.send(result);
-//   });
-// });
+router.get('/drinks', function(req, res, next) {
+  db.sequelize.query("SELECT * FROM Products", {raw=true}).then((result) => {
+    res.send(result);
+  });
+});
 
 router.get('/locations', function(req, res, next) {
   db.Location.findAll().then((result) => {
