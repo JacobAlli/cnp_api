@@ -16,7 +16,7 @@ router.get('/products', function(req, res, next) {
 });
 
 router.get('/drinks', function(req, res, next) {
-  db.sequelize.query("SELECT * FROM Products WHERE Products.category = 'Beer' ORDER BY subcategory", {raw=true}).then((result) => {
+  db.sequelize.query("SELECT * FROM Products WHERE Products.category = 'Beer'", {raw=true}).then((result) => {
     res.send(result);
   });
 });
