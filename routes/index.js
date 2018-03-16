@@ -15,6 +15,30 @@ router.get('/products', function(req, res, next) {
   });
 });
 
+router.get('/drinks', function(req, res, next) {
+  db.sequelize.query("SELECT * FROM Products WHERE category = 'Beer'", {raw:true}).then((result) => {
+    res.send(result[0]);
+  });
+});
+
+router.get('/drinks/canned', function(req, res, next) {
+  db.sequelize.query("SELECT * FROM Products WHERE subcategory = 'Canned'", {raw:true}).then((result) => {
+    res.send(result[0]);
+  });
+});
+
+router.get('/drinks/draft', function(req, res, next) {
+  db.sequelize.query("SELECT * FROM Products WHERE subcategory = 'Draft'", {raw:true}).then((result) => {
+    res.send(result[0]);
+  });
+});
+
+router.get('/food', function(req, res, next) {
+  db.sequelize.query("SELECT * FROM Products WHERE category = 'Food' ", {raw:true}).then((result) => {
+    res.send(result[0]);
+  });
+});
+
 router.get('/locations', function(req, res, next) {
   db.Location.findAll().then((result) => {
   	res.send(result);
@@ -23,7 +47,7 @@ router.get('/locations', function(req, res, next) {
 
 router.get('/order_details', function(req, res, next) {
   db.sequelize.query('SELECT * FROM OrderDetails LEFT JOIN Products ON OrderDetails.product_id = Products.product_id', {raw:true}).then((result) => {
- res.send(result[0]);
+    res.send(result[0]);
   });
 });
 
