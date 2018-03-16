@@ -58,7 +58,7 @@ router.get('/food/munchies', function(req, res, next) {
 });
 
 router.get('/food/salads', function(req, res, next) {
-  db.sequelize.query("SELECT * FROM Products WHERE subcategory = 'Salad", {raw:true}).then((result) => {
+  db.sequelize.query("SELECT * FROM Products WHERE subcategory = 'Salad'", {raw:true}).then((result) => {
     res.send(result[0]);
   });
 });
