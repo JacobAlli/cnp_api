@@ -82,7 +82,7 @@ router.post("/add/cart", function(req, res) {
       .then(() => db.User.findAll({where: {fbId: req.body.fbId}}))
       .then((result) => {
             console.log('added user to user table');
-            res.sendStatus(200).json(result);
+            res.json(result);
       });
  });
 
