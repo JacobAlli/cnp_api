@@ -34,7 +34,37 @@ router.get('/drinks/draft', function(req, res, next) {
 });
 
 router.get('/food', function(req, res, next) {
-  db.sequelize.query("SELECT * FROM Products WHERE category = 'Food' ", {raw:true}).then((result) => {
+  db.sequelize.query("SELECT * FROM Products WHERE category = 'Food'", {raw:true}).then((result) => {
+    res.send(result[0]);
+  });
+});
+
+router.get('/food/rotchx', function(req, res, next) {
+  db.sequelize.query("SELECT * FROM Products WHERE subcategory = 'Rotisserie Chicken'", {raw:true}).then((result) => {
+    res.send(result[0]);
+  });
+});
+
+router.get('/food/sandwich', function(req, res, next) {
+  db.sequelize.query("SELECT * FROM Products WHERE subcategory = 'Sandwich'", {raw:true}).then((result) => {
+    res.send(result[0]);
+  });
+});
+
+router.get('/food/munchies', function(req, res, next) {
+  db.sequelize.query("SELECT * FROM Products WHERE subcategory = 'Munchies", {raw:true}).then((result) => {
+    res.send(result[0]);
+  });
+});
+
+router.get('/food/salads', function(req, res, next) {
+  db.sequelize.query("SELECT * FROM Products WHERE subcategory = 'Salad", {raw:true}).then((result) => {
+    res.send(result[0]);
+  });
+});
+
+router.get('/food/sides', function(req, res, next) {
+  db.sequelize.query("SELECT * FROM Products WHERE subcategory = 'Sides' ", {raw:true}).then((result) => {
     res.send(result[0]);
   });
 });
