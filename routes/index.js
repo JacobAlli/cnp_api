@@ -76,7 +76,7 @@ router.get('/locations', function(req, res, next) {
 });
 
 router.get('/order_details', function(req, res, next) {
-  db.sequelize.query('SELECT * FROM OrderDetails LEFT JOIN Products ON OrderDetails.product_id = Products.product_id', {raw:true}).then((result) => {
+  db.sequelize.query('SELECT OrderDetails.*, Products.* FROM OrderDetails LEFT JOIN Products ON OrderDetails.product_id = Products.product_id', {raw:true}).then((result) => {
     res.send(result[0]);
   });
 });
