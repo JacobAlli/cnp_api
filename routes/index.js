@@ -78,9 +78,9 @@ router.get('/locations', function(req, res, next) {
 router.get('/order_details/:id', function(req, res, next) {
 
   db.sequelize.query(`SELECT OrderDetails.*, Products.product_description, SUM(Products.cost) FROM OrderDetails LEFT JOIN Products ON OrderDetails.product_id = Products.product_id group by Products.product_id`, {raw:true}).then((result) => {
-    res.send(result[0]);
-    console.log(req.params.id);
-    console.log(req.query.id);
+    res.json(result[0]);
+    console.log(parseInt(req.params.id));
+    console.log(parseInt(req.query.id));
   });
 });
 
