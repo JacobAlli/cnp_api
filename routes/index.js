@@ -9,8 +9,8 @@ router.get('/orders', function(req, res, next) {
   });
 });
 
-router.get('/products', function(req, res, next) {
-  db.Product.findAll().then((result) => {
+router.get('/products/:category', function(req, res, next) {
+  db.Product.findAll({where: {category: req.params.category}}).then((result) => {
   	res.send(result);
   });
 });
