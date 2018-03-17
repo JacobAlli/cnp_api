@@ -117,8 +117,8 @@ router.post("/add/cart", function(req, res) {
       });
  });
 
-router.post("/delete/cart/:id", function(req, res) {
-      db.OrderDetails.destroy({where: {user_id: req.params.id}})
+router.post("/delete/cart", function(req, res) {
+      db.OrderDetails.destroy({where: {user_id: req.body.id}})
  });
 
 //  router.post('/update/OrderDetails', function(req, res){
