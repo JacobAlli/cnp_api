@@ -75,8 +75,9 @@ router.get('/locations', function(req, res, next) {
   });
 });
 
-router.get('/order_details', function(req, res, next) {
-  db.sequelize.query('SELECT OrderDetails.*, Products.product_description, Products.cost FROM OrderDetails LEFT JOIN Products ON OrderDetails.product_id = Products.product_id', {raw:true}).then((result) => {
+router.get('/order_details/:id', function(req, res, next) {
+  console.log(req.params.id);
+  db.sequelize.query(`SELECT OrderDetails.*, Products.product_description, SUM(Products.cost) FROM OrderDetails LEFT JOIN Products ON OrderDetails.product_id = Products.product_id group by Products.product_id`, {raw:true}).then((result) => {
     res.send(result[0]);
   });
 });
