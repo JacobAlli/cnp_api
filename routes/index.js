@@ -118,7 +118,7 @@ router.post("/add/cart", function(req, res) {
  });
 
 router.post("/delete/cart", function(req, res) {
-      db.OrderDetails.destroy({where: {user_id: req.body.id}})
+      db.OrderDetails.destroy({where: {user_id: req.body.id}}).then(() => res.sendStatus(200));
  });
 
 //  router.post('/update/OrderDetails', function(req, res){
